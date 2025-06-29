@@ -13,6 +13,10 @@ export const routes: Routes = [
         path: 'trending',
         loadComponent: () => import('./gifs/pages/trending/trending-page.component'),
       },
+      {
+        path: '**',
+        redirectTo: 'trending',
+      },
     ]
   },
   {
