@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'search-page',
+  selector: "search-page",
   imports: [],
-  templateUrl: './search-page.component.html',
-  styleUrl: './search-page.component.css',
+  templateUrl: "./search-page.component.html",
+  styleUrl: "./search-page.component.css",
 })
-export default class SearchPage { }
+export default class SearchPage {}
