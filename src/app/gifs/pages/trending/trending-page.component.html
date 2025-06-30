@@ -1,1 +1,9 @@
-<gif-list [gifs]="gifs()" />
+<section class="flex flex-col gap-4">
+  <h1 class="text-2xl font-bold">Trending Gifs</h1>
+
+  @if (gifsLoading()) {
+    <spinner />
+  } @else {
+    <gif-list [gifs]="gifs()" />
+  }
+</section>

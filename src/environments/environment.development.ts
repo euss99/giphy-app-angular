@@ -3,6 +3,7 @@ export const environment = {
   companyName: "Giphy",
   companyDescription: "Manage your gif collection.",
 
-  // Api Keys
+  // Giphy
   giphyApiKey: "2o3qrtuSNNMezuutXyNdASo8C2Plcw1V",
+  giphyApiUrl: "https://api.giphy.com/v1",
 };

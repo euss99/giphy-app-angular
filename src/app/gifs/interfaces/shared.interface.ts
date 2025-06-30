@@ -5,7 +5,7 @@ export interface MenuOption {
   route: string;
 }
 
-export interface Gif {
+export interface GifItem {
   id: string;
   title: string;
   url: string;
