@@ -1,0 +1,5 @@
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+  @for (gif of gifs(); track gif.id) {
+    <gif-list-item [gif]="gif"></gif-list-item>
+  }
+</div>

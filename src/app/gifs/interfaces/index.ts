@@ -4,3 +4,9 @@ export interface MenuOption {
   subLabel: string;
   route: string;
 }
+
+export interface Gif {
+  id: string;
+  title: string;
+  url: string;
+}
