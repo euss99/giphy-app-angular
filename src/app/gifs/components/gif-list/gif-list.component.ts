@@ -1,4 +1,4 @@
-import { Component, computed, input } from "@angular/core";
+import { Component, computed, ElementRef, input, viewChild } from "@angular/core";
 
 import { GifItem } from "@/app/gifs/interfaces/gif.interface";
 

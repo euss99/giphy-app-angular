@@ -8,6 +8,7 @@ import { GifItem } from "@/app/gifs/interfaces/gif.interface";
 import { GifMapper } from "@app/gifs/mapper/gif.mapper";
 import { GiphyResponse } from "@app/gifs/interfaces/giphy.interfaces";
 
+const TENDING_GIFS_LIMIT = 20;
 const MAX_HISTORY_LENGTH = 10;
 const SEARCH_HISTORY_KEY = "searchHistory";
 
@@ -35,17 +36,15 @@ export class GifsService {
   public searchHistory = signal<SearchHistory>(getSearchHistory());
   public searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));
 
-  private searchHistoryEffect = effect(() => setSearchHistory(this.searchHistory()), {
-    allowSignalWrites: true,
-  });
+  private searchHistoryEffect = effect(() => setSearchHistory(this.searchHistory()));
 
-  public getTrendingGifs(): Observable<GifItem[]> {
+  public getTrendingGifs(offset: number): Observable<GifItem[]> {
     return this.http
       .get<GiphyResponse>(`${environment.giphyApiUrl}/gifs/trending`, {
         params: {
           api_key: environment.giphyApiKey,
-          limit: 20,
-          offset: 0,
+          limit: TENDING_GIFS_LIMIT,
+          offset,
         },
       })
       .pipe(map(({ data }) => GifMapper.toGifItems(data)));
@@ -56,7 +55,7 @@ export class GifsService {
       .get<GiphyResponse>(`${environment.giphyApiUrl}/gifs/search`, {
         params: {
           api_key: environment.giphyApiKey,
-          limit: 20,
+          limit: TENDING_GIFS_LIMIT,
           q: query,
         },
       })

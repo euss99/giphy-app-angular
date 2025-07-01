@@ -1,13 +1,11 @@
 <section class="flex flex-col gap-4">
   <h1 class="text-2xl font-bold">Trending Gifs</h1>
 
-  @if (gifsLoading()) {
-    <spinner />
-  } @else {
-    @if (gifs().length > 0) {
+  @if (gifs().length > 0) {
+    <div #gifList class="h-screen overflow-y-auto hide-scrollbar" (scroll)="onScroll($event)">
       <gif-list [gifs]="gifs()" />
-    } @else {
-      <p class="text-gray-500 text-center text-xl">No gifs found</p>
-    }
+    </div>
+  } @else {
+    <p class="text-gray-500 text-center text-xl">No gifs found</p>
   }
 </section>
