@@ -1,6 +1,6 @@
 import { Component, signal, inject, computed } from "@angular/core";
 
-import { GifItem } from "@app/gifs/interfaces/shared.interface";
+import { GifItem } from "@/app/gifs/interfaces/gif.interface";
 import { GifList } from "@app/gifs/components/gif-list/gif-list.component";
 import { GifsService } from "@app/gifs/services/gifs.service";
 import { Spinner } from "@app/shared/components/spinner/spinner.component";

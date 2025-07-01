@@ -4,7 +4,7 @@ import { computed, inject, Injectable, signal, effect } from "@angular/core";
 import { Observable, map, tap } from "rxjs";
 
 import { environment } from "@environments/environment";
-import { GifItem } from "@/app/gifs/interfaces/shared.interface";
+import { GifItem } from "@/app/gifs/interfaces/gif.interface";
 import { GifMapper } from "@app/gifs/mapper/gif.mapper";
 import { GiphyResponse } from "@app/gifs/interfaces/giphy.interfaces";
 

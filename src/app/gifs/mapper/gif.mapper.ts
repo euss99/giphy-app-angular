@@ -1,5 +1,5 @@
 import { GiphyItem } from "@app/gifs/interfaces/giphy.interfaces";
-import { GifItem } from "@app/gifs/interfaces/shared.interface";
+import { GifItem } from "@/app/gifs/interfaces/gif.interface";
 
 export class GifMapper {
   public static toGifItem(gif: GiphyItem): GifItem {

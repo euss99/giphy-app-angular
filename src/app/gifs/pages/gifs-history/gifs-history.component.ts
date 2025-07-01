@@ -4,7 +4,7 @@ import { toSignal } from "@angular/core/rxjs-interop";
 
 import { map } from "rxjs";
 
-import { GifItem } from "@app/gifs/interfaces/shared.interface";
+import { GifItem } from "@/app/gifs/interfaces/gif.interface";
 import { GifsService } from "@app/gifs/services/gifs.service";
 import { GifList } from "@app/gifs/components/gif-list/gif-list.component";
 

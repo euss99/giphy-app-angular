@@ -1,7 +1,7 @@
 import { Component, input } from "@angular/core";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 
-import { MenuOption } from "@app/gifs/interfaces/shared.interface";
+import { MenuOption } from "@/app/gifs/interfaces/gif.interface";
 
 @Component({
   selector: "side-menu-options",

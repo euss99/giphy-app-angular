@@ -1,7 +1,7 @@
 import { Component, computed, inject } from "@angular/core";
 
 import { GifsService } from "@app/gifs/services/gifs.service";
-import { MenuOption } from "@app/gifs/interfaces/shared.interface";
+import { MenuOption } from "@/app/gifs/interfaces/gif.interface";
 import { SideMenuHeader } from "@app/gifs/components/side-menu/side-menu-header/side-menu-header.component";
 import { SideMenuOptions } from "@app/gifs/components/side-menu/side-menu-options/side-menu-options.component";
 
