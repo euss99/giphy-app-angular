@@ -1,6 +1,7 @@
+import { Observable, map } from "rxjs";
+
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { Observable, map } from "rxjs";
 
 import { environment } from "@environments/environment";
 import { GifItem } from "@/app/gifs/interfaces/shared.interface";
@@ -19,7 +20,7 @@ export class GifsService {
         offset: 0
       },
     }).pipe(
-      map(response => GifMapper.toGifItems(response.data))
+      map(({data}) => GifMapper.toGifItems(data))
     );
   }
 
@@ -31,7 +32,7 @@ export class GifsService {
         q: query,
       },
     }).pipe(
-      map(response => GifMapper.toGifItems(response.data))
+      map(({data}) => GifMapper.toGifItems(data))
     );
   }
 }
