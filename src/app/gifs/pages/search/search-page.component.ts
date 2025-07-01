@@ -8,7 +8,7 @@ import { Spinner } from "@app/shared/components/spinner/spinner.component";
 @Component({
   selector: "search-page",
   imports: [Spinner, GifList],
-  templateUrl: "./search-page.component.html"
+  templateUrl: "./search-page.component.html",
 })
 export default class SearchPage {
   private gifsService = inject(GifsService);
@@ -31,7 +31,7 @@ export default class SearchPage {
       },
       error: () => {
         this.gifsLoading.set(false);
-      }
+      },
     });
 
     // Limpiar el input

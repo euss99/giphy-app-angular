@@ -29,7 +29,7 @@ export default class TrendingPage {
       },
       error: () => {
         this.gifsLoading.set(false);
-      }
+      },
     });
   }
 }

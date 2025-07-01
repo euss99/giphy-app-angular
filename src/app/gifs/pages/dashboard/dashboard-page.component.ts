@@ -6,6 +6,6 @@ import { SideMenu } from "@app/gifs/components/side-menu/side-menu.component";
 @Component({
   selector: "dashboard-page",
   imports: [RouterOutlet, SideMenu],
-  templateUrl: "./dashboard-page.component.html"
+  templateUrl: "./dashboard-page.component.html",
 })
 export default class DashboardPage {}

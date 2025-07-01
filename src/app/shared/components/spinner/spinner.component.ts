@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'spinner',
+  selector: "spinner",
   imports: [],
-  templateUrl: './spinner.component.html',
+  templateUrl: "./spinner.component.html",
 })
-export class Spinner { }
+export class Spinner {}
