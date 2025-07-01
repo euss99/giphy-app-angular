@@ -1,16 +1,21 @@
-import { Observable, map } from "rxjs";
-
 import { HttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
+import { computed, inject, Injectable, signal } from "@angular/core";
+
+import { Observable, map, tap } from "rxjs";
 
 import { environment } from "@environments/environment";
 import { GifItem } from "@/app/gifs/interfaces/shared.interface";
 import { GifMapper } from "@app/gifs/mapper/gif.mapper";
 import { GiphyResponse } from "@app/gifs/interfaces/giphy.interfaces";
 
+type SearchHistory = Record<string, GifItem[]>;
+
 @Injectable({ providedIn: "root" })
 export class GifsService {
   private http = inject(HttpClient);
+
+  public searchHistory = signal<SearchHistory>({});
+  public searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));
 
   public getTrendingGifs(): Observable<GifItem[]> {
     return this.http.get<GiphyResponse>(`${environment.giphyApiUrl}/gifs/trending`, {
@@ -32,7 +37,13 @@ export class GifsService {
         q: query,
       },
     }).pipe(
-      map(({data}) => GifMapper.toGifItems(data))
+      map(({data}) => GifMapper.toGifItems(data)),
+      tap(gifs => {
+        this.searchHistory.update(history => ({
+          ...history,
+          [query]: gifs
+        }));
+      })
     );
   }
 }

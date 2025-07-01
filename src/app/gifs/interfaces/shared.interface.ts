@@ -1,8 +1,8 @@
 export interface MenuOption {
   icon: string;
   label: string;
-  subLabel: string;
   route: string;
+  subLabel?: string;
 }
 
 export interface GifItem {

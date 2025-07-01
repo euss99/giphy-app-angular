@@ -3,5 +3,8 @@
   class="w-[240px] bg-gray-900 min-h-screen z-10 text-slate-300 fixed left-0 h-screen overflow-y-scroll"
 >
   <side-menu-header />
-  <side-menu-options />
+  <side-menu-options
+    [menuOptions]="menuOptions"
+    [searchHistoryKeys]="searchHistoryKeys()"
+  />
 </div>

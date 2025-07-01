@@ -1,4 +1,4 @@
-import { Component, signal, inject, computed } from "@angular/core";
+import { Component, signal, inject } from "@angular/core";
 
 import { GifItem } from "@app/gifs/interfaces/shared.interface";
 import { GifList } from "@app/gifs/components/gif-list/gif-list.component";
