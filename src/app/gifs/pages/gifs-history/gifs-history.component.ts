@@ -13,7 +13,7 @@ import { GifList } from "@app/gifs/components/gif-list/gif-list.component";
   imports: [GifList],
   templateUrl: "./gifs-history.component.html",
 })
-export default class GifsHistory {
+export default class GifsHistoryPage {
   private route = inject(ActivatedRoute);
   private gifsService = inject(GifsService);
 

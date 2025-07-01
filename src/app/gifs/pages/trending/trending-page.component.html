@@ -4,6 +4,10 @@
   @if (gifsLoading()) {
     <spinner />
   } @else {
-    <gif-list [gifs]="gifs()" />
+    @if (gifs().length > 0) {
+      <gif-list [gifs]="gifs()" />
+    } @else {
+      <p class="text-gray-500 text-center text-xl">No gifs found</p>
+    }
   }
 </section>

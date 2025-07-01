@@ -1,13 +1,23 @@
-import { Component, input } from "@angular/core";
+import { Component, computed, input } from "@angular/core";
 
 import { GifItem } from "@/app/gifs/interfaces/shared.interface";
-import { GifListItem } from "@app/gifs/components/gif-list/gif-list-item/gif-list-item.component";
 
 @Component({
   selector: "gif-list",
-  imports: [GifListItem],
+  imports: [],
   templateUrl: "./gif-list.component.html",
 })
 export class GifList {
   public gifs = input.required<GifItem[]>();
+
+  public gridGifs = computed<GifItem[][]>(() => {
+    const gifs = this.gifs();
+    const grid = [];
+
+    for (let i = 0; i < gifs.length; i += 3) {
+      grid.push(gifs.slice(i, i + 3));
+    }
+
+    return grid;
+  });
 }

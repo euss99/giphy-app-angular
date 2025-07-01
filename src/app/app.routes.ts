@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 
 const DashboardPage = () => import("@app/gifs/pages/dashboard/dashboard-page.component");
-const GifsHistory = () => import("@app/gifs/pages/gifs-history/gifs-history.component");
+const GifsHistoryPage = () => import("@app/gifs/pages/gifs-history/gifs-history.component");
 const SearchPage = () => import("@app/gifs/pages/search/search-page.component");
 const TrendingPage = () => import("@app/gifs/pages/trending/trending-page.component");
 
@@ -20,7 +20,7 @@ export const routes: Routes = [
       },
       {
         path: "history/:query",
-        loadComponent: GifsHistory,
+        loadComponent: GifsHistoryPage,
       },
       {
         path: "**",
