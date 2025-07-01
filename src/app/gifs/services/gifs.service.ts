@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { computed, inject, Injectable, signal } from "@angular/core";
+import { computed, inject, Injectable, signal, effect } from "@angular/core";
 
 import { Observable, map, tap } from "rxjs";
 
@@ -8,14 +8,36 @@ import { GifItem } from "@/app/gifs/interfaces/shared.interface";
 import { GifMapper } from "@app/gifs/mapper/gif.mapper";
 import { GiphyResponse } from "@app/gifs/interfaces/giphy.interfaces";
 
+const MAX_HISTORY_LENGTH = 10;
+const SEARCH_HISTORY_KEY = "searchHistory";
+
 type SearchHistory = Record<string, GifItem[]>;
+
+const getSearchHistory = (): SearchHistory => {
+  const searchHistory = localStorage.getItem(SEARCH_HISTORY_KEY);
+  return searchHistory ? JSON.parse(searchHistory) : {};
+};
+
+const setSearchHistory = (searchHistory: SearchHistory) => {
+  if (Object.keys(searchHistory).length > MAX_HISTORY_LENGTH) {
+    const keys = Object.keys(searchHistory);
+    const oldestKey = keys[0];
+    delete searchHistory[oldestKey];
+  }
+
+  localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(searchHistory));
+};
 
 @Injectable({ providedIn: "root" })
 export class GifsService {
   private http = inject(HttpClient);
 
-  public searchHistory = signal<SearchHistory>({});
+  public searchHistory = signal<SearchHistory>(getSearchHistory());
   public searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));
+
+  private searchHistoryEffect = effect(() => setSearchHistory(this.searchHistory()), {
+    allowSignalWrites: true,
+  });
 
   public getTrendingGifs(): Observable<GifItem[]> {
     return this.http
